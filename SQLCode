@@ -1,28 +1,28 @@
---create table displaying the average of literacy by gender
-SELECT AVG(female_youth_literacy_rate) AS female_youth_literacy_average, AVG(male_youth_literacy_rate) AS male_youth_literacy_average
-FROM `my-data-project1234-360322.eduction_literacy.literacy`
---removed percentage of early stimulation and responsive care by father since by adult is already there
-ALTER TABLE my-data-project1234-360322.eduction_literacy.literacy
-DROP COLUMN percentage_of_early_stimulation_and_responsive_care_by_father
+--Create table displaying the average of literacy by gender
+  SELECT AVG(female_youth_literacy_rate) AS female_youth_literacy_average, AVG(male_youth_literacy_rate) AS male_youth_literacy_average
+    FROM `my-data-project1234-360322.eduction_literacy.literacy`
+--Removed percentage of early stimulation and responsive care by father since by adult is already there
+  ALTER TABLE my-data-project1234-360322.eduction_literacy.literacy
+    DROP COLUMN percentage_of_early_stimulation_and_responsive_care_by_father
 --Create new table of correlation coefficients for each variable of early childhood experiences with female youth literacy
-CREATE TABLE eduction_literacy.early_child_exp_vs_female_lit AS
-SELECT CORR(percentage_of_attendance_in_early_childhood_education, female_youth_literacy_rate)
-AS attendance_ece_vs_female_lit_correlation,
-CORR (percentage_of_early_stimulation_and_responsive_care_by_adults, female_youth_literacy_rate)
-AS early_sim_care_adult_vs_female_lit_correlation,
-CORR (percentage_of_children_with_childrens_books_available_at_home, female_youth_literacy_rate)
-AS books_at_home_vs_female_lit_correlation,
-CORR (percentage_of_children_with_inadequate_supervision, female_youth_literacy_rate)
-AS inadequate_supv_vs_lit_correlation
-FROM `my-data-project1234-360322.eduction_literacy.literacy`
+  CREATE TABLE eduction_literacy.early_child_exp_vs_female_lit AS
+    SELECT CORR(percentage_of_attendance_in_early_childhood_education, female_youth_literacy_rate)
+    AS attendance_ece_vs_female_lit_correlation,
+    CORR (percentage_of_early_stimulation_and_responsive_care_by_adults, female_youth_literacy_rate)
+    AS early_sim_care_adult_vs_female_lit_correlation,
+    CORR (percentage_of_children_with_childrens_books_available_at_home, female_youth_literacy_rate)
+    AS books_at_home_vs_female_lit_correlation,
+    CORR (percentage_of_children_with_inadequate_supervision, female_youth_literacy_rate)
+    AS inadequate_supv_vs_lit_correlation
+    FROM `my-data-project1234-360322.eduction_literacy.literacy`
 --Create new table of correlation coefficients for each variable of early childhood experiences with male youth literacy
-CREATE TABLE eduction_literacy.early_child_exp_vs_male_lit AS
-SELECT CORR(percentage_of_attendance_in_early_childhood_education, male_youth_literacy_rate)
-AS attendance_ece_vs_male_lit_correlation,
-CORR (percentage_of_early_stimulation_and_responsive_care_by_adults, male_youth_literacy_rate)
-AS early_sim_care_adult_vs_male_lit_correlation,
-CORR (percentage_of_children_with_childrens_books_available_at_home, male_youth_literacy_rate)
-AS books_at_home_vs_male_lit_correlation,
-CORR (percentage_of_children_with_inadequate_supervision, male_youth_literacy_rate)
-AS inadequate_supv_vs_male_lit_correlation
-FROM `my-data-project1234-360322.eduction_literacy.literacy`
+  CREATE TABLE eduction_literacy.early_child_exp_vs_male_lit AS
+    SELECT CORR(percentage_of_attendance_in_early_childhood_education, male_youth_literacy_rate)
+    AS attendance_ece_vs_male_lit_correlation,
+    CORR (percentage_of_early_stimulation_and_responsive_care_by_adults, male_youth_literacy_rate)
+    AS early_sim_care_adult_vs_male_lit_correlation,
+    CORR (percentage_of_children_with_childrens_books_available_at_home, male_youth_literacy_rate)
+    AS books_at_home_vs_male_lit_correlation,
+    CORR (percentage_of_children_with_inadequate_supervision, male_youth_literacy_rate)
+    AS inadequate_supv_vs_male_lit_correlation
+    FROM `my-data-project1234-360322.eduction_literacy.literacy`
